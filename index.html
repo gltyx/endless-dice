@@ -1,0 +1,90 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="images/icon.png">
+
+    <script src="js/conclusion.js"></script>
+    <script src="js/other.js"></script>
+    <script src="js/cards.js"></script>
+    <script src="js/main.js"></script>
+
+    <title>Endless Dice</title>
+</head>
+<body onload="loadGame()">
+    <div id="popup_text"></div>
+    <div id="conclusion" class="pos-center"></div>
+    <div id="main_menu">
+        <div class="pos-bottom" style="opacity: 0; z-index: -1;">
+            <img src="images/attack.png">
+            <img src="images/D1.png">
+            <img src="images/D2.png">
+            <img src="images/D3.png">
+            <img src="images/D4.png">
+            <img src="images/D5.png">
+            <img src="images/D6.png">
+            <img src="images/D7.png">
+            <img src="images/D8.png">
+            <img src="images/D9.png">
+            <img src="images/heal.png">
+            <img src="images/scrambler.png">
+        </div>
+        <div class="pos-center" style="width: 100%;">
+            <img src="images/icon.png">
+            <h1>Endless Dice</h1><br><br>
+            <button onclick="setPopup(POPUP.tutorial0())">Start a Round! Let's Roll!</button><br>
+            <span>Minimum window size is 1280x720, recommended size - 1920x1080. If you are not comfortable during game, you may change zoom!</span><br><br>
+            Jam Game made by MrRedShark77!
+        </div>
+    </div><div id="game">
+        <div id="round">Round 1</div>
+        <div class="table_center" style="height: 100%;">
+            <div style="width: 50%; height: 100%; position: relative;" id="player_div">
+                <h2>You<span id="player_move"></span></h2>
+                <span id="player_health" style="color: lightcoral;"></span>
+                <div class="pos-center">
+                    Energy <span id="player_energy"></span> <button onclick='spawnCost("p_grid")'>Roll, 1 Energy Cost</button>
+                    <div class="grid" id="p_grid">
+                        
+                    </div>
+                    <div class="table_center" style="align-items: center;">
+                        <div class="picked_dice" id="p_dice0"></div>
+                        <div style="width: 50px;">x</div>
+                        <div class="picked_dice" id="p_dice1"></div>
+                        <div style="width: 50px;">x</div>
+                        <div id="player_mult"></div>
+                        <div style="width: 50px;">=</div>
+                        <div id="player_result"></div>
+                    </div>
+                </div><div class="pos-bottom" style="bottom: 20px; width: 100%;">
+                    <button id="player_proccess" onclick='makeMove()'></button>
+                    <button id="player_clear" onclick='clearPick()'>Clear picking Dices</button>
+                </div>
+            </div><div style="width: 50%; height: 100%; position: relative;" id="enemy_div">
+                <h2>Enemy<span id="enemy_move"></span></h2>
+                <span id="enemy_health" style="color: lightcoral;"></span>
+                <div class="pos-center">
+                    Energy <span id="enemy_energy"></span>
+                    <div class="grid" id="e_grid">
+                        
+                    </div>
+                    <div class="table_center" style="align-items: center;">
+                        <div class="picked_dice" id="e_dice0"></div>
+                        <div style="width: 50px;">x</div>
+                        <div class="picked_dice" id="e_dice1"></div>
+                        <div style="width: 50px;">x</div>
+                        <div id="enemy_mult"></div>
+                        <div style="width: 50px;">=</div>
+                        <div id="enemy_result"></div>
+                    </div>
+                </div><div class="pos-bottom" style="bottom: 20px; width: 100%;">
+                    <button id="player_pass" onclick='if (data.player.energy > 0 && tmp.av_p_slots.length > 0) setPopup(POPUP.passConfirm()); else pass()'>Pass to Enemy</button><button onclick='clearCost()'>Clear your grid, 3 Energy Cost</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
